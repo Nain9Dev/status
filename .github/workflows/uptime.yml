@@ -1,0 +1,64 @@
+name: Uptime Monitor & Status Deploy
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    name: Probe Services & Update Dashboard
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run unit test suite
+        run: python -m unittest discover -s tests -v
+
+      - name: Probe services and generate dashboard
+        run: python scripts/monitor.py
+
+      - name: Commit updated metrics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html data/status.json
+          git diff --staged --quiet || git commit -m "chore(metrics): update status metrics and latency logs"
+          git push origin main || echo "No changes or push conflicts resolved on next cycle"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+  deploy:
+    name: Deploy to GitHub Pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: probe
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

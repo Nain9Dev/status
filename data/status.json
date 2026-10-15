@@ -1,0 +1,183 @@
+{
+  "timestamp_iso": "2026-10-15T17:07:59Z",
+  "total_services": 16,
+  "operational_services": 16,
+  "services": [
+    {
+      "id": "portfolio",
+      "name": "NainDev Portfolio",
+      "url": "https://www.naindev.com/",
+      "category": "Platform Hub",
+      "description": "Architectural portfolio & showcase gateway",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 378.1,
+      "error": null
+    },
+    {
+      "id": "nain-policy",
+      "name": "NainPolicy",
+      "url": "https://policy.naindev.com/",
+      "category": "Backend & Cloud",
+      "description": "Insurance policy operations & financial accounting engine (.NET 10)",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 442.7,
+      "error": null
+    },
+    {
+      "id": "nain-order",
+      "name": "NainOrder",
+      "url": "https://order.naindev.com/",
+      "category": "Backend & Cloud",
+      "description": "Tactical DDD e-commerce order API with CQRS (.NET 10)",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 552.2,
+      "error": null
+    },
+    {
+      "id": "nain-drive",
+      "name": "NainDrive",
+      "url": "https://drive.naindev.com/",
+      "category": "Backend & Cloud",
+      "description": "Driving school management & accounting engine (Python / FastAPI)",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 343.7,
+      "error": null
+    },
+    {
+      "id": "nain-notify",
+      "name": "NainNotify",
+      "url": "https://notify.naindev.com/",
+      "category": "Backend & Cloud",
+      "description": "Asynchronous notification microservice (.NET 10 / MassTransit)",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 311.0,
+      "error": null
+    },
+    {
+      "id": "nain-tai",
+      "name": "NainTAI",
+      "url": "https://tai.naindev.com/",
+      "category": "Backend & Cloud",
+      "description": "Civil service exam simulator (.NET 10 / Dapper / React 19)",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 295.9,
+      "error": null
+    },
+    {
+      "id": "nain-3d",
+      "name": "Nain3D",
+      "url": "https://3d.naindev.com/",
+      "category": "3D Geometry & Validation",
+      "description": "Deterministic 3D asset validation engine & conformance gateway",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 319.7,
+      "error": null
+    },
+    {
+      "id": "parametricad",
+      "name": "ParametriCAD AI",
+      "url": "https://parametricad.naindev.com/",
+      "category": "3D Geometry & Validation",
+      "description": "Deterministic parametric CAD engine & WebGL viewer (OpenCASCADE)",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 179.3,
+      "error": null
+    },
+    {
+      "id": "nain-configurator",
+      "name": "NainConfigurator",
+      "url": "https://configurator.naindev.com/",
+      "category": "3D Geometry & Validation",
+      "description": "Modular product configurator engine (.NET 10 / Vue 3)",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 384.4,
+      "error": null
+    },
+    {
+      "id": "nain-prospect",
+      "name": "NainProspect",
+      "url": "https://prospect.naindev.com/",
+      "category": "Workbenches & Applications",
+      "description": "B2B lead generation & compliance outreach pipeline (FastAPI / Vue 3)",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 305.7,
+      "error": null
+    },
+    {
+      "id": "nain-write",
+      "name": "NainWrite",
+      "url": "https://write.naindev.com/",
+      "category": "Workbenches & Applications",
+      "description": "Deterministic Spanish text rewriting workbench (TypeScript)",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 339.9,
+      "error": null
+    },
+    {
+      "id": "have-tickets",
+      "name": "HaveTickets",
+      "url": "https://tickets.naindev.com/",
+      "category": "Workbenches & Applications",
+      "description": "Cinema ticketing & seat reservation platform (Blazor / .NET 10)",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 319.5,
+      "error": null
+    },
+    {
+      "id": "game-haven",
+      "name": "GameHaven",
+      "url": "https://gamehaven.naindev.com/",
+      "category": "Workbenches & Applications",
+      "description": "Indie game digital desktop storefront & catalog (WPF / Web)",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 291.6,
+      "error": null
+    },
+    {
+      "id": "orbe-3d",
+      "name": "Orbe3D",
+      "url": "https://orbe.naindev.com/",
+      "category": "Web Games (Zero Engine)",
+      "description": "Procedural 3D arcade endless runner (Three.js / Web Audio)",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 335.5,
+      "error": null
+    },
+    {
+      "id": "pong-arcade",
+      "name": "PongArcade",
+      "url": "https://pong.naindev.com/",
+      "category": "Web Games (Zero Engine)",
+      "description": "Continuous collision 3D arena pong (TypeScript / Canvas)",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 383.8,
+      "error": null
+    },
+    {
+      "id": "tai-client-legacy",
+      "name": "TAI Study System (Vercel)",
+      "url": "https://tai-study-system-js.vercel.app/",
+      "category": "Backend & Cloud",
+      "description": "Historical standalone client deployment for exam simulation",
+      "status": "operational",
+      "status_code": 200,
+      "latency_ms": 203.5,
+      "error": null
+    }
+  ]
+}
