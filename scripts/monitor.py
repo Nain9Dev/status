@@ -25,6 +25,13 @@ SERVICES = [
         "description": "Architectural portfolio & showcase gateway"
     },
     {
+        "id": "brandbook",
+        "name": "NainDev Brandbook & Design Tokens",
+        "url": "https://brand.naindev.com/",
+        "category": "Platform Hub",
+        "description": "Visual identity, mathematical logo anatomy & standalone CSS design tokens"
+    },
+    {
         "id": "nain-policy",
         "name": "NainPolicy",
         "url": "https://policy.naindev.com/",
