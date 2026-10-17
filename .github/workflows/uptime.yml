@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Setup Python 3.12
         uses: actions/setup-python@v5
@@ -39,9 +41,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html data/status.json
+          git add index.html data/status.json data/history.json
           git diff --staged --quiet || git commit -m "chore(metrics): update status metrics and latency logs"
-          git push origin main || echo "No changes or push conflicts resolved on next cycle"
+          git pull --rebase origin main || true
+          git push origin main || echo "Push deferred or non-fast-forward handled on next cycle"
+
+      - name: Prevent workflow suspension
+        uses: gautamkrishnar/keepalive-workflow@v2
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

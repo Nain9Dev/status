@@ -6,18 +6,24 @@
     <title>NainDev Status | Platform Observability & Uptime</title>
     <meta name="description" content="Real-time uptime, response latency, and operational health metrics across all NainDev platforms and microservices.">
     <link rel="icon" type="image/x-icon" href="https://www.naindev.com/favicon.ico">
+    <meta property="og:title" content="NainDev Platform Status">
+    <meta property="og:description" content="Real-time uptime and operational metrics for NainDev applications.">
+    <meta property="og:url" content="https://status.naindev.com/">
+    <meta property="og:type" content="website">
     <style>
         :root {
             --bg: #07090e;
             --surface: #0e121a;
             --surface-hover: #141924;
             --border: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(56, 189, 248, 0.3);
             --text: #f1f5f9;
             --text-muted: #94a3b8;
             --accent: #38bdf8;
             --green: #22c55e;
+            --amber: #f59e0b;
             --red: #ef4444;
-            --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -26,6 +32,7 @@
             font-family: var(--font);
             line-height: 1.5;
             padding: 32px 16px 80px;
+            -webkit-font-smoothing: antialiased;
         }
         .container {
             max-width: 1040px;
@@ -67,8 +74,9 @@
             text-decoration: none;
             font-size: 13px;
             font-weight: 500;
+            transition: color 0.15s ease;
         }
-        .back-link:hover { text-decoration: underline; }
+        .back-link:hover { text-decoration: underline; color: #7dd3fc; }
         .hero-banner {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -90,6 +98,7 @@
             width: 14px;
             height: 14px;
             border-radius: 50%;
+            flex-shrink: 0;
         }
         .status-good { background: var(--green); box-shadow: 0 0 12px rgba(34, 197, 94, 0.6); }
         .status-warning { background: var(--red); box-shadow: 0 0 12px rgba(239, 68, 68, 0.6); }
@@ -105,6 +114,7 @@
             display: flex;
             gap: 24px;
             font-size: 13px;
+            flex-wrap: wrap;
         }
         .stat-item strong { color: var(--text); font-weight: 600; }
         .category-section {
@@ -128,11 +138,11 @@
             border: 1px solid var(--border);
             border-radius: 10px;
             padding: 18px 20px;
-            transition: transform 0.15s ease, border-color 0.15s ease;
+            transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
         }
         .service-card:hover {
             transform: translateY(-1px);
-            border-color: rgba(255, 255, 255, 0.16);
+            border-color: var(--border-hover);
             background: var(--surface-hover);
         }
         .service-header {
@@ -153,6 +163,7 @@
             flex-shrink: 0;
         }
         .dot-green { background: var(--green); box-shadow: 0 0 8px rgba(34, 197, 94, 0.5); }
+        .dot-amber { background: var(--amber); box-shadow: 0 0 8px rgba(245, 158, 11, 0.5); }
         .dot-red { background: var(--red); box-shadow: 0 0 8px rgba(239, 68, 68, 0.5); }
         .service-link {
             color: var(--text);
@@ -168,8 +179,9 @@
             border-radius: 4px;
             letter-spacing: 0.04em;
         }
-        .badge.operational { background: rgba(34, 197, 94, 0.12); color: var(--green); }
-        .badge.degraded, .badge.down { background: rgba(239, 68, 68, 0.12); color: var(--red); }
+        .badge.operational { background: rgba(34, 197, 94, 0.12); color: var(--green); border: 1px solid rgba(34, 197, 94, 0.25); }
+        .badge.degraded { background: rgba(245, 158, 11, 0.12); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.25); }
+        .badge.down { background: rgba(239, 68, 68, 0.12); color: var(--red); border: 1px solid rgba(239, 68, 68, 0.25); }
         .service-desc {
             font-size: 12px;
             color: var(--text-muted);
@@ -202,38 +214,38 @@
 <body>
     <div class="container">
         <header>
-            <a href="https://www.naindev.com/" class="brand">
-                <div class="brand-badge">N</div>
+            <a href="https://www.naindev.com/" class="brand" aria-label="NainDev Portfolio">
+                <div class="brand-badge" aria-hidden="true">N</div>
                 <div class="brand-title">NainDev Platform Status</div>
             </a>
             <a href="https://www.naindev.com/" class="back-link">&larr; Return to naindev.com</a>
         </header>
 
-        <main>
+        <main id="main-content">
             <div class="hero-banner">
                 <div class="banner-status">
-                    <div class="status-indicator status-good"></div>
+                    <div class="status-indicator status-good" aria-hidden="true"></div>
                     <div>
                         <div class="banner-title">All Systems Operational</div>
-                        <div class="banner-meta">Last probe: 2026-10-17T21:20:55Z UTC &bull; Verified via automated CI probe</div>
+                        <div class="banner-meta">Last probe: 2026-10-17T20:40:16Z UTC &bull; Verified via automated CI probe with deterministic retries</div>
                     </div>
                 </div>
                 <div class="stats-summary">
                     <div class="stat-item">Monitored: <strong>17/17</strong></div>
-                    <div class="stat-item">Average Latency: <strong>247.0 ms</strong></div>
-                    <div class="stat-item">SLA Target: <strong>99.9%</strong></div>
+                    <div class="stat-item">Average Latency: <strong>268.8 ms</strong></div>
+                    <div class="stat-item">Measured Uptime: <strong>100.0%</strong></div>
                 </div>
             </div>
 
             
-            <section class="category-section">
-                <h2 class="category-heading">Platform Hub</h2>
+            <section class="category-section" aria-labelledby="heading-platform-hub">
+                <h2 id="heading-platform-hub" class="category-heading">Platform Hub</h2>
                 <div class="grid">
                     
-                <div class="service-card">
+                <article class="service-card" id="card-portfolio">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://www.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 NainDev Portfolio
                             </a>
@@ -242,15 +254,15 @@
                     </div>
                     <p class="service-desc">Architectural portfolio & showcase gateway</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>225.8 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>347.1 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
-                <div class="service-card">
+                <article class="service-card" id="card-brandbook">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://brand.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 NainDev Brandbook & Design Tokens
                             </a>
@@ -259,22 +271,22 @@
                     </div>
                     <p class="service-desc">Visual identity, mathematical logo anatomy & standalone CSS design tokens</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>279.0 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>190.7 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
                 </div>
             </section>
         
-            <section class="category-section">
-                <h2 class="category-heading">Backend & Cloud</h2>
+            <section class="category-section" aria-labelledby="heading-backend-&-cloud">
+                <h2 id="heading-backend-&-cloud" class="category-heading">Backend & Cloud</h2>
                 <div class="grid">
                     
-                <div class="service-card">
+                <article class="service-card" id="card-nain-policy">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://policy.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 NainPolicy
                             </a>
@@ -283,15 +295,15 @@
                     </div>
                     <p class="service-desc">Insurance policy operations & financial accounting engine (.NET 10)</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>239.9 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>182.3 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
-                <div class="service-card">
+                <article class="service-card" id="card-nain-order">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://order.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 NainOrder
                             </a>
@@ -300,15 +312,15 @@
                     </div>
                     <p class="service-desc">Tactical DDD e-commerce order API with CQRS (.NET 10)</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>246.2 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>330.0 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
-                <div class="service-card">
+                <article class="service-card" id="card-nain-drive">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://drive.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 NainDrive
                             </a>
@@ -317,15 +329,15 @@
                     </div>
                     <p class="service-desc">Driving school management & accounting engine (Python / FastAPI)</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>222.0 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>377.4 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
-                <div class="service-card">
+                <article class="service-card" id="card-nain-notify">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://notify.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 NainNotify
                             </a>
@@ -334,15 +346,15 @@
                     </div>
                     <p class="service-desc">Asynchronous notification microservice (.NET 10 / MassTransit)</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>211.4 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>304.9 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
-                <div class="service-card">
+                <article class="service-card" id="card-nain-tai">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://tai.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 NainTAI
                             </a>
@@ -351,15 +363,15 @@
                     </div>
                     <p class="service-desc">Civil service exam simulator (.NET 10 / Dapper / React 19)</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>509.1 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>297.1 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
-                <div class="service-card">
+                <article class="service-card" id="card-tai-client-legacy">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://tai-study-system-js.vercel.app/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 TAI Study System (Vercel)
                             </a>
@@ -368,22 +380,22 @@
                     </div>
                     <p class="service-desc">Historical standalone client deployment for exam simulation</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>258.6 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>283.7 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
                 </div>
             </section>
         
-            <section class="category-section">
-                <h2 class="category-heading">3D Geometry & Validation</h2>
+            <section class="category-section" aria-labelledby="heading-3d-geometry-&-validation">
+                <h2 id="heading-3d-geometry-&-validation" class="category-heading">3D Geometry & Validation</h2>
                 <div class="grid">
                     
-                <div class="service-card">
+                <article class="service-card" id="card-nain-3d">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://3d.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 Nain3D
                             </a>
@@ -392,15 +404,15 @@
                     </div>
                     <p class="service-desc">Deterministic 3D asset validation engine & conformance gateway</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>242.5 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>292.1 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
-                <div class="service-card">
+                <article class="service-card" id="card-parametricad">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://parametricad.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 ParametriCAD AI
                             </a>
@@ -409,15 +421,15 @@
                     </div>
                     <p class="service-desc">Deterministic parametric CAD engine & WebGL viewer (OpenCASCADE)</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>163.7 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>267.6 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
-                <div class="service-card">
+                <article class="service-card" id="card-nain-configurator">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://configurator.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 NainConfigurator
                             </a>
@@ -426,22 +438,22 @@
                     </div>
                     <p class="service-desc">Modular product configurator engine (.NET 10 / Vue 3)</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>210.2 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>259.6 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
                 </div>
             </section>
         
-            <section class="category-section">
-                <h2 class="category-heading">Workbenches & Applications</h2>
+            <section class="category-section" aria-labelledby="heading-workbenches-&-applications">
+                <h2 id="heading-workbenches-&-applications" class="category-heading">Workbenches & Applications</h2>
                 <div class="grid">
                     
-                <div class="service-card">
+                <article class="service-card" id="card-nain-prospect">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://prospect.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 NainProspect
                             </a>
@@ -450,15 +462,15 @@
                     </div>
                     <p class="service-desc">B2B lead generation & compliance outreach pipeline (FastAPI / Vue 3)</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>242.3 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>284.4 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
-                <div class="service-card">
+                <article class="service-card" id="card-nain-write">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://write.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 NainWrite
                             </a>
@@ -467,15 +479,15 @@
                     </div>
                     <p class="service-desc">Deterministic Spanish text rewriting workbench (TypeScript)</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>231.5 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>267.7 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
-                <div class="service-card">
+                <article class="service-card" id="card-have-tickets">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://tickets.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 HaveTickets
                             </a>
@@ -484,15 +496,15 @@
                     </div>
                     <p class="service-desc">Cinema ticketing & seat reservation platform (Blazor / .NET 10)</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>224.8 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>251.6 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
-                <div class="service-card">
+                <article class="service-card" id="card-game-haven">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://gamehaven.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 GameHaven
                             </a>
@@ -501,22 +513,22 @@
                     </div>
                     <p class="service-desc">Indie game digital desktop storefront & catalog (WPF / Web)</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>265.8 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>259.6 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
                 </div>
             </section>
         
-            <section class="category-section">
-                <h2 class="category-heading">Web Games (Zero Engine)</h2>
+            <section class="category-section" aria-labelledby="heading-web-games-(zero-engine)">
+                <h2 id="heading-web-games-(zero-engine)" class="category-heading">Web Games (Zero Engine)</h2>
                 <div class="grid">
                     
-                <div class="service-card">
+                <article class="service-card" id="card-orbe-3d">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://orbe.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 Orbe3D
                             </a>
@@ -525,15 +537,15 @@
                     </div>
                     <p class="service-desc">Procedural 3D arcade endless runner (Three.js / Web Audio)</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>230.2 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>289.3 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
-                <div class="service-card">
+                <article class="service-card" id="card-pong-arcade">
                     <div class="service-header">
                         <div class="service-name-row">
-                            <span class="status-dot dot-green"></span>
+                            <span class="status-dot dot-green" aria-label="Status: operational"></span>
                             <a href="https://pong.naindev.com/" target="_blank" rel="noopener noreferrer" class="service-link">
                                 PongArcade
                             </a>
@@ -542,10 +554,10 @@
                     </div>
                     <p class="service-desc">Continuous collision 3D arena pong (TypeScript / Canvas)</p>
                     <div class="service-meta">
-                        <span class="meta-label">Latency: <strong>195.4 ms</strong></span>
+                        <span class="meta-label">Latency: <strong>84.4 ms</strong></span>
                         <span class="meta-label">HTTP 200</span>
                     </div>
-                </div>
+                </article>
             
                 </div>
             </section>
@@ -554,7 +566,11 @@
 
         <footer>
             <div>Observability engine running on GitHub Actions &bull; 0,00 € operational cost &bull; Automated every 30m</div>
-            <div><a href="data/status.json" target="_blank">Raw JSON Metrics</a> &bull; <a href="https://github.com/Nain9Dev/status">GitHub Repository</a></div>
+            <div>
+                <a href="data/status.json" target="_blank" rel="noopener noreferrer">Raw JSON Metrics</a> &bull;
+                <a href="data/history.json" target="_blank" rel="noopener noreferrer">Historical Log</a> &bull;
+                <a href="https://github.com/Nain9Dev/status" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+            </div>
         </footer>
     </div>
 </body>

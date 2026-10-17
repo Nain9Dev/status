@@ -1,7 +1,8 @@
 {
-  "timestamp_iso": "2026-10-17T21:20:55Z",
+  "timestamp_iso": "2026-10-17T20:40:16Z",
   "total_services": 17,
   "operational_services": 17,
+  "uptime_pct": 100.0,
   "services": [
     {
       "id": "portfolio",
@@ -11,8 +12,9 @@
       "description": "Architectural portfolio & showcase gateway",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 225.8,
-      "error": null
+      "latency_ms": 347.1,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "brandbook",
@@ -22,8 +24,9 @@
       "description": "Visual identity, mathematical logo anatomy & standalone CSS design tokens",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 279.0,
-      "error": null
+      "latency_ms": 190.7,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "nain-policy",
@@ -33,8 +36,9 @@
       "description": "Insurance policy operations & financial accounting engine (.NET 10)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 239.9,
-      "error": null
+      "latency_ms": 182.3,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "nain-order",
@@ -44,8 +48,9 @@
       "description": "Tactical DDD e-commerce order API with CQRS (.NET 10)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 246.2,
-      "error": null
+      "latency_ms": 330.0,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "nain-drive",
@@ -55,8 +60,9 @@
       "description": "Driving school management & accounting engine (Python / FastAPI)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 222.0,
-      "error": null
+      "latency_ms": 377.4,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "nain-notify",
@@ -66,8 +72,9 @@
       "description": "Asynchronous notification microservice (.NET 10 / MassTransit)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 211.4,
-      "error": null
+      "latency_ms": 304.9,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "nain-tai",
@@ -77,8 +84,9 @@
       "description": "Civil service exam simulator (.NET 10 / Dapper / React 19)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 509.1,
-      "error": null
+      "latency_ms": 297.1,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "nain-3d",
@@ -88,8 +96,9 @@
       "description": "Deterministic 3D asset validation engine & conformance gateway",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 242.5,
-      "error": null
+      "latency_ms": 292.1,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "parametricad",
@@ -99,8 +108,9 @@
       "description": "Deterministic parametric CAD engine & WebGL viewer (OpenCASCADE)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 163.7,
-      "error": null
+      "latency_ms": 267.6,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "nain-configurator",
@@ -110,8 +120,9 @@
       "description": "Modular product configurator engine (.NET 10 / Vue 3)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 210.2,
-      "error": null
+      "latency_ms": 259.6,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "nain-prospect",
@@ -121,8 +132,9 @@
       "description": "B2B lead generation & compliance outreach pipeline (FastAPI / Vue 3)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 242.3,
-      "error": null
+      "latency_ms": 284.4,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "nain-write",
@@ -132,8 +144,9 @@
       "description": "Deterministic Spanish text rewriting workbench (TypeScript)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 231.5,
-      "error": null
+      "latency_ms": 267.7,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "have-tickets",
@@ -143,8 +156,9 @@
       "description": "Cinema ticketing & seat reservation platform (Blazor / .NET 10)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 224.8,
-      "error": null
+      "latency_ms": 251.6,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "game-haven",
@@ -154,8 +168,9 @@
       "description": "Indie game digital desktop storefront & catalog (WPF / Web)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 265.8,
-      "error": null
+      "latency_ms": 259.6,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "orbe-3d",
@@ -165,8 +180,9 @@
       "description": "Procedural 3D arcade endless runner (Three.js / Web Audio)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 230.2,
-      "error": null
+      "latency_ms": 289.3,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "pong-arcade",
@@ -176,8 +192,9 @@
       "description": "Continuous collision 3D arena pong (TypeScript / Canvas)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 195.4,
-      "error": null
+      "latency_ms": 84.4,
+      "error": null,
+      "retries": 0
     },
     {
       "id": "tai-client-legacy",
@@ -187,8 +204,9 @@
       "description": "Historical standalone client deployment for exam simulation",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 258.6,
-      "error": null
+      "latency_ms": 283.7,
+      "error": null,
+      "retries": 0
     }
   ]
 }

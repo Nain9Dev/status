@@ -1,0 +1,14 @@
+[
+  {
+    "timestamp": "2026-10-17T20:39:23Z",
+    "total": 17,
+    "operational": 17,
+    "avg_latency_ms": 323.6
+  },
+  {
+    "timestamp": "2026-10-17T20:40:16Z",
+    "total": 17,
+    "operational": 17,
+    "avg_latency_ms": 268.8
+  }
+]
