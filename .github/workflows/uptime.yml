@@ -2,7 +2,7 @@ name: Uptime Monitor & Status Deploy
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/14 * * * *'
   workflow_dispatch:
   push:
     branches: ["main"]
