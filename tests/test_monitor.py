@@ -199,6 +199,33 @@ class TestMonitor(unittest.TestCase):
         self.assertIn("Test Service 2", html)
         self.assertIn("https://test1.naindev.com/", html)
 
+    def test_should_commit_triggers_on_manual_events(self):
+        """Verifies should_commit returns true when triggered by push or workflow_dispatch."""
+        from scripts.should_commit import should_commit
+
+        with patch.dict(os.environ, {"GITHUB_EVENT_NAME": "workflow_dispatch"}):
+            self.assertTrue(should_commit())
+
+        with patch.dict(os.environ, {"GITHUB_EVENT_NAME": "push"}):
+            self.assertTrue(should_commit())
+
+    def test_should_commit_triggers_on_outage(self):
+        """Verifies should_commit returns true when any service is down."""
+        from scripts.should_commit import should_commit
+
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            status_file = os.path.join(tmp_dir, "status.json")
+            with open(status_file, "w", encoding="utf-8") as f:
+                json.dump({"total_services": 17, "operational_services": 16}, f)
+
+            with patch("scripts.should_commit.open", create=True) as mock_open:
+                mock_open.return_value.__enter__.return_value.read.return_value = json.dumps(
+                    {"total_services": 17, "operational_services": 16}
+                )
+                with patch.dict(os.environ, {"GITHUB_EVENT_NAME": "schedule"}):
+                    self.assertTrue(should_commit())
+
 
 if __name__ == "__main__":
     unittest.main()
+
