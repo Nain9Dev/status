@@ -2,6 +2,8 @@
 
 <div align="center">
 
+[![Language: English](https://img.shields.io/badge/Language-English-blue.svg)](#)
+[![Versión en Español](https://img.shields.io/badge/Versión-Español-red.svg)](README.es.md)
 [![Uptime Probe](https://github.com/Nain9Dev/status/actions/workflows/uptime.yml/badge.svg)](https://github.com/Nain9Dev/status/actions/workflows/uptime.yml)
 [![Live Status](https://img.shields.io/badge/status-100%25%20operational-success)](https://status.naindev.com/)
 [![Engineering Handbook](https://img.shields.io/badge/paved%20road-Observability-blue)](https://github.com/Nain9Dev/engineering-handbook)
