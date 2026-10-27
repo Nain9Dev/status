@@ -1,3 +1,9 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/banner-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="docs/assets/banner-light.svg">
+  <img alt="Plano arquitectónico de Estado de la plataforma NainDev" src="docs/assets/banner-dark.svg" width="100%">
+</picture>
+
 # Estado de la plataforma NainDev
 
 <div align="center">
