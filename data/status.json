@@ -1,5 +1,5 @@
 {
-  "timestamp_iso": "2026-10-26T11:21:26Z",
+  "timestamp_iso": "2026-10-27T00:59:48Z",
   "total_services": 17,
   "operational_services": 17,
   "uptime_pct": 100.0,
@@ -12,7 +12,7 @@
       "description": "Architectural portfolio & showcase gateway",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 236.2,
+      "latency_ms": 224.0,
       "error": null,
       "retries": 0
     },
@@ -24,7 +24,7 @@
       "description": "Visual identity, mathematical logo anatomy & standalone CSS design tokens",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 253.6,
+      "latency_ms": 335.5,
       "error": null,
       "retries": 0
     },
@@ -36,7 +36,7 @@
       "description": "Insurance policy operations & financial accounting engine (.NET 10)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 263.9,
+      "latency_ms": 267.7,
       "error": null,
       "retries": 0
     },
@@ -48,7 +48,7 @@
       "description": "Tactical DDD e-commerce order API with CQRS (.NET 10)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 1184.0,
+      "latency_ms": 283.8,
       "error": null,
       "retries": 0
     },
@@ -60,7 +60,7 @@
       "description": "Driving school management & accounting engine (Python / FastAPI)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 258.0,
+      "latency_ms": 306.7,
       "error": null,
       "retries": 0
     },
@@ -72,7 +72,7 @@
       "description": "Asynchronous notification microservice (.NET 10 / MassTransit)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 230.2,
+      "latency_ms": 220.4,
       "error": null,
       "retries": 0
     },
@@ -84,7 +84,7 @@
       "description": "Civil service exam simulator (.NET 10 / Dapper / React 19)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 214.6,
+      "latency_ms": 320.2,
       "error": null,
       "retries": 0
     },
@@ -96,7 +96,7 @@
       "description": "Deterministic 3D asset validation engine & conformance gateway",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 238.1,
+      "latency_ms": 281.3,
       "error": null,
       "retries": 0
     },
@@ -108,7 +108,7 @@
       "description": "Deterministic parametric CAD engine & WebGL viewer (OpenCASCADE)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 213.9,
+      "latency_ms": 155.7,
       "error": null,
       "retries": 0
     },
@@ -120,7 +120,7 @@
       "description": "Modular product configurator engine (.NET 10 / Vue 3)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 152.4,
+      "latency_ms": 127.8,
       "error": null,
       "retries": 0
     },
@@ -132,7 +132,7 @@
       "description": "B2B lead generation & compliance outreach pipeline (FastAPI / Vue 3)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 1656.8,
+      "latency_ms": 189.9,
       "error": null,
       "retries": 0
     },
@@ -144,7 +144,7 @@
       "description": "Deterministic Spanish text rewriting workbench (TypeScript)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 293.5,
+      "latency_ms": 179.0,
       "error": null,
       "retries": 0
     },
@@ -156,7 +156,7 @@
       "description": "Cinema ticketing & seat reservation platform (Blazor / .NET 10)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 189.8,
+      "latency_ms": 111.7,
       "error": null,
       "retries": 0
     },
@@ -168,7 +168,7 @@
       "description": "Indie game digital desktop storefront & catalog (WPF / Web)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 144.8,
+      "latency_ms": 211.0,
       "error": null,
       "retries": 0
     },
@@ -180,7 +180,7 @@
       "description": "Procedural 3D arcade endless runner (Three.js / Web Audio)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 141.5,
+      "latency_ms": 105.0,
       "error": null,
       "retries": 0
     },
@@ -192,7 +192,7 @@
       "description": "Continuous collision 3D arena pong (TypeScript / Canvas)",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 135.9,
+      "latency_ms": 56.5,
       "error": null,
       "retries": 0
     },
@@ -204,7 +204,7 @@
       "description": "Historical standalone client deployment for exam simulation",
       "status": "operational",
       "status_code": 200,
-      "latency_ms": 101.6,
+      "latency_ms": 100.4,
       "error": null,
       "retries": 0
     }
