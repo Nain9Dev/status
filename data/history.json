@@ -220,5 +220,11 @@
     "total": 17,
     "operational": 17,
     "avg_latency_ms": 322.6
+  },
+  {
+    "timestamp": "2026-11-08T05:25:20Z",
+    "total": 17,
+    "operational": 17,
+    "avg_latency_ms": 274.3
   }
 ]
