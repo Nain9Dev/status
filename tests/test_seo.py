@@ -79,7 +79,7 @@ class TestGeneratedPageSeo(unittest.TestCase):
 
     def test_json_ld_software_application(self) -> None:
         blocks = re.findall(
-            r'<script type="application/ld\+json">(.*?)</script>', self.html, flags=re.S
+            r'<script type="application/ld\+json">(.*?)</script>', self.html, flags=re.DOTALL
         )
         self.assertEqual(len(blocks), 1)
         self.assertNotIn("<", blocks[0])
