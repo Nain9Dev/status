@@ -1,0 +1,10 @@
+# NainDev Status
+
+> Public status page with uptime, response latency and operational health of the NainDev platforms, probed automatically from GitHub Actions.
+
+## Links
+
+- [Status page](https://status.naindev.com/): current state of every monitored service
+- [Raw metrics](https://status.naindev.com/data/status.json): latest probe results as JSON
+- [Source repository](https://github.com/Nain9Dev/status): monitor script and workflow
+- [NainDev](https://www.naindev.com/): main site of the author, Aitor Nain
