@@ -359,6 +359,7 @@ def generate_html_dashboard(data: Dict[str, Any]) -> str:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NainDev Status | Platform Observability & Uptime</title>
     <meta name="description" content="Real-time uptime, response latency, and operational health metrics across all NainDev platforms and microservices.">
+    <link rel="canonical" href="https://status.naindev.com/">
     <link rel="icon" type="image/x-icon" href="https://www.naindev.com/favicon.ico">
     <meta property="og:title" content="NainDev Platform Status">
     <meta property="og:description" content="Real-time uptime and operational metrics for NainDev applications.">

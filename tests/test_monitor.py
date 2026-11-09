@@ -199,6 +199,25 @@ class TestMonitor(unittest.TestCase):
         self.assertIn("Test Service 2", html)
         self.assertIn("https://test1.naindev.com/", html)
 
+    def test_generated_dashboard_declares_one_canonical_url_matching_cname(self):
+        """The page must name its preferred URL so Google does not treat http and https as duplicates."""
+        import re
+        from pathlib import Path
+
+        html = generate_html_dashboard(
+            {
+                "timestamp_iso": "2026-11-09T00:00:00Z",
+                "total_services": 0,
+                "operational_services": 0,
+                "uptime_pct": 100.0,
+                "services": [],
+            }
+        )
+        links = re.findall(r'<link\s+rel="canonical"\s+href="([^"]+)"', html)
+        self.assertEqual(1, len(links))
+        cname = (Path(__file__).resolve().parents[1] / "CNAME").read_text(encoding="utf-8").strip()
+        self.assertEqual(f"https://{cname}/", links[0])
+
     def test_should_commit_triggers_on_manual_events(self):
         """Verifies should_commit returns true when triggered by push or workflow_dispatch."""
         from scripts.should_commit import should_commit
