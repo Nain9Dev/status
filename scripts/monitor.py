@@ -296,8 +296,64 @@ def update_history_and_compute_uptime(
     return round((operational_checks / total_checks) * 100.0, 2)
 
 
+SITE_URL = "https://status.naindev.com/"
+SITE_NAME = "NainDev Status"
+SITE_DESCRIPTION = (
+    "Real-time uptime, response latency, and operational health metrics "
+    "across all NainDev platforms and microservices."
+)
+SOCIAL_IMAGE_URL = "https://www.naindev.com/assets/images/og-cover-v5.jpg"
+AUTHOR_URL = "https://www.naindev.com/"
+
+
+def build_seo_head() -> str:
+    """Returns the discoverability tags (canonical, Open Graph, Twitter, JSON-LD) for the page head."""
+    structured_data = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": SITE_NAME,
+        "url": SITE_URL,
+        "description": SITE_DESCRIPTION,
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "isAccessibleForFree": True,
+        "inLanguage": "en",
+        "author": {
+            "@type": "Person",
+            "@id": "https://www.naindev.com/#person",
+            "name": "Aitor Nain Mendoza Vallejo",
+            "url": AUTHOR_URL,
+        },
+        "sameAs": ["https://github.com/Nain9Dev/status"],
+    }
+    # Escape "<" so the JSON can never close the script element early.
+    json_ld = json.dumps(structured_data, indent=2, ensure_ascii=False).replace("<", "\\u003c")
+    title = "NainDev Platform Status"
+    return "\n".join(
+        [
+            f'<meta name="description" content="{SITE_DESCRIPTION}">',
+            f'<link rel="canonical" href="{SITE_URL}">',
+            f'<link rel="author" href="{AUTHOR_URL}">',
+            '<meta property="og:type" content="website">',
+            f'<meta property="og:site_name" content="{SITE_NAME}">',
+            f'<meta property="og:title" content="{title}">',
+            f'<meta property="og:description" content="{SITE_DESCRIPTION}">',
+            f'<meta property="og:url" content="{SITE_URL}">',
+            f'<meta property="og:image" content="{SOCIAL_IMAGE_URL}">',
+            '<meta property="og:image:width" content="1200">',
+            '<meta property="og:image:height" content="630">',
+            '<meta name="twitter:card" content="summary_large_image">',
+            f'<meta name="twitter:title" content="{title}">',
+            f'<meta name="twitter:description" content="{SITE_DESCRIPTION}">',
+            f'<meta name="twitter:image" content="{SOCIAL_IMAGE_URL}">',
+            f'<script type="application/ld+json">{json_ld}</script>',
+        ]
+    )
+
+
 def generate_html_dashboard(data: Dict[str, Any]) -> str:
     """Generates the static responsive HTML status page with real measured uptime."""
+    seo_head = build_seo_head()
     operational_count = sum(1 for s in data["services"] if s["status"] == "operational")
     total_count = len(data["services"])
     all_ok = operational_count == total_count
@@ -358,13 +414,8 @@ def generate_html_dashboard(data: Dict[str, Any]) -> str:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NainDev Status | Platform Observability & Uptime</title>
-    <meta name="description" content="Real-time uptime, response latency, and operational health metrics across all NainDev platforms and microservices.">
-    <link rel="canonical" href="https://status.naindev.com/">
+    {seo_head}
     <link rel="icon" type="image/x-icon" href="https://www.naindev.com/favicon.ico">
-    <meta property="og:title" content="NainDev Platform Status">
-    <meta property="og:description" content="Real-time uptime and operational metrics for NainDev applications.">
-    <meta property="og:url" content="https://status.naindev.com/">
-    <meta property="og:type" content="website">
     <style>
         :root {{
             --bg: #07090e;
