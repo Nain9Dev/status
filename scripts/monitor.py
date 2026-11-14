@@ -304,6 +304,10 @@ SITE_DESCRIPTION = (
 )
 SOCIAL_IMAGE_URL = "https://www.naindev.com/assets/images/og-cover-v5.jpg"
 AUTHOR_URL = "https://www.naindev.com/"
+# Label under the icon of the installed page; manifest.webmanifest declares the same short_name.
+APP_SHORT_NAME = "NainStatus"
+# Background the page paints first (--bg in the stylesheet), repeated by manifest.webmanifest.
+THEME_COLOR = "#07090e"
 
 
 def build_seo_head() -> str:
@@ -351,9 +355,25 @@ def build_seo_head() -> str:
     )
 
 
+def build_install_head() -> str:
+    """Returns the tags a phone needs to install the page: manifest link, iOS tags and browser bar colour."""
+    return "\n    ".join(
+        [
+            '<link rel="manifest" href="./manifest.webmanifest">',
+            '<link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">',
+            '<meta name="mobile-web-app-capable" content="yes">',
+            '<meta name="apple-mobile-web-app-capable" content="yes">',
+            f'<meta name="apple-mobile-web-app-title" content="{APP_SHORT_NAME}">',
+            '<meta name="apple-mobile-web-app-status-bar-style" content="black">',
+            f'<meta name="theme-color" content="{THEME_COLOR}">',
+        ]
+    )
+
+
 def generate_html_dashboard(data: Dict[str, Any]) -> str:
     """Generates the static responsive HTML status page with real measured uptime."""
     seo_head = build_seo_head()
+    install_head = build_install_head()
     operational_count = sum(1 for s in data["services"] if s["status"] == "operational")
     total_count = len(data["services"])
     all_ok = operational_count == total_count
@@ -416,6 +436,7 @@ def generate_html_dashboard(data: Dict[str, Any]) -> str:
     <title>NainDev Status | Platform Observability & Uptime</title>
     {seo_head}
     <link rel="icon" type="image/x-icon" href="https://www.naindev.com/favicon.ico">
+    {install_head}
     <style>
         :root {{
             --bg: #07090e;
